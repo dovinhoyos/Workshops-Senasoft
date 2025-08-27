@@ -22,4 +22,10 @@ router
   })
   .prefix('user')
 
+router
+  .group(() => {
+    router.post('/workshops/:id/enroll', '#controllers/enrollments_controller.store')
+  })
+  .use(middleware.auth())
+
 router.get('/workshops', [WorkshopsController, 'index'])
