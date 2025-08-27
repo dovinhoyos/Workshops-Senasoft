@@ -14,3 +14,19 @@ export async function api<T>(path: string, opts: RequestInit = {}): Promise<T> {
   }
   return (await res.json()) as T;
 }
+
+// ======================
+// Workshops API
+// ======================
+
+export async function getWorkshops() {
+  return api<
+    {
+      id: number;
+      title: string;
+      description: string;
+      capacity: number;
+      availableSlots: number;
+    }[]
+  >("/workshops");
+}
